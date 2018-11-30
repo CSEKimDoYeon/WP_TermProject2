@@ -1,0 +1,122 @@
+﻿@charset "utf-8";
+
+/*html 속성 정의*/
+html {
+  height: 100%;
+}
+/*body 태그 기본 속성 정의*/
+body {
+  background-color: #ff0000;
+  height: 100%;
+  width: 900px;
+  margin: auto;
+  padding: 20px 30px 20px 30px;
+}
+/*폼 태그를 포함하는 기본 body 속성 정의*/
+.main_body {
+  height: 100%;
+  width: 350px;
+  
+  
+}
+/*main 태그 속성 정의*/
+main {
+  background-color: #ffffff;
+  height: 90%;
+  width: 800px;
+  margin: auto;
+  padding: 10px;
+}
+
+/* 게시판 리스트 목록 */
+.kakao_btn_div {
+	margin : 25px;
+	text-align: center;
+}
+
+/*서브뉴스의 리스트 속성들 정의*/
+.sub_news, .sub_news th, .sub_news td {
+  border: 0;
+
+}
+
+/*table의 div 속성 정의*/
+
+.table_div {
+  margin-left: 100px;
+}
+
+
+/*서브뉴스의 a 태그 속성 정의*/
+.sub_news a {
+  color: #383838;
+  text-decoration: none
+}
+/*서브뉴스의 기본 속성 정의*/
+.sub_news {
+  width: 100%;
+  border-bottom: 1px solid #999;
+  color: #666;
+  font-size: 12px;
+  table-layout: fixed
+}
+/*캡션 속성 정의*/
+.sub_news caption {
+  display: none
+}
+/*서브뉴스 테이블 헤더의 속성 정의*/
+.sub_news th {
+  padding: 5px 0 6px;
+  border-top: solid 1px #999;
+  border-bottom: solid 1px #b2b2b2;
+  background-color: #f1f1f4;
+  color: #333;
+  font-weight: bold;
+  line-height: 20px;
+  vertical-align: top
+}
+/*서브뉴스 테이블 데이터의 속성 정의*/
+.sub_news td {
+  padding: 8px 0 9px;
+  border-bottom: solid 1px #d2d2d2;
+  text-align: center;
+  line-height: 18px;
+}
+/*서브뉴스 날짜, 조회수란 속성 정의*/
+.sub_news .date, .sub_news .hit {
+  padding: 0;
+  font-family: Tahoma;
+  font-size: 11px;
+  line-height: normal
+}
+/*서브뉴스 타이틀 정의*/
+.sub_news .title {
+  text-align: left;
+  padding-left: 15px;
+  font-size: 13px;
+}
+
+.sub_news .title .pic, .sub_news .title .new {
+  margin: 0 0 1px;
+  vertical-align: middle
+}
+
+.sub_news .title a.comment {
+  padding: 0;
+  background: none;
+  color: #f00;
+  font-size: 12px;
+  font-weight: bold
+}
+
+.sub_news tr.reply .title a {
+  padding-left: 16px;
+  background: url(첨부파일/ic_reply.png) 0 1px no-repeat
+}
+ 
+th, tr {
+	text-align: center;
+}
+
+
+/* //게시판 리스트 목록 */

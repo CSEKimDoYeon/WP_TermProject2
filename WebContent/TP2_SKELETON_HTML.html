@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+<meta charset="UTF-8">
+
+<title>컴퓨터공학과 학생회 공지!</title>
+<!-- CSS, JS External 정의 -->
+<link rel="stylesheet" type="text/css" href="TP2_SKELETON_CSS.css">
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+
+
+<!-- 제이쿼리 라이브러리 import -->
+<script src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.23/jquery-ui.min.js"></script>
+
+<script src="TP2_JS.js?ver=1" charset="utf-8"></script>
+
+<!-- 카카오 API import -->
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+</head>
+
+<body class="main_body" background="img/background.jpg">
+	<!-- 게시판 테이블 정의 -->
+	<div height="30px" weight="10px" background="img/banner.PNG"></div>
+	<div>
+		<!-- CSS, JS External 정의 -->
+		<table id="input_table" class="table table-bordered">
+			<thead>
+			</thead>
+			<tbody>
+				<!----------- table 배너 ----------->
+				<form action="" method="post"
+					encType="multiplart/form-data">
+					<tr>
+						<td colspan="2" height="50px" align="center">
+							<p>
+								<font size="6"><strong>Kakao Notification</strong></font>
+							</p>
+						</td>
+
+					</tr>
+					<!----------- 제목 입력란 ----------->
+					<tr>
+						<th>제목:</th>
+						<td><input id="input_title" type="text"
+							placeholder="제목을 입력하세요. " name="subject" class="form-control" /></td>
+					</tr>
+					<!----------- 내용 입력란 ----------->
+					<tr>
+						<th>내용:</th>
+						<td><textarea id="input_contents" cols="100"
+								placeholder="내용을 입력하세요. " name="content" class="form-control"
+								rows="5"></textarea></td>
+					</tr>
+					<!----------- 위치 첨부란 ----------->
+					<tr>
+						<th>위치:</th>
+						<td><input id="input_location" type="text"
+							placeholder="위치를 입력하세요. " name="location" class="form-control" /></td>
+					</tr>
+					<!----------- 링크 입력란 ----------->
+					<tr>
+						<th>링크:</th>
+						<td><input id="input_link" type="text"
+							placeholder="링크를 입력하세요." class="form-control" /></td>
+					</tr>
+
+				</form>
+			</tbody>
+		</table>
+	</div>
+
+	<!----------- 카카오 버튼 정의 ----------->
+	<div class="kakao_btn_div" onclick="">
+		<a id="kakao-link-btn" href="javascript:sendLink()"> 
+			<img src="img/btn_kakaotalk.jpg" width="300px" height="45px" />
+		</a>
+	</div>
+	<!----------- 카카오 링크 스크립트 ----------->
+
+	<script type='text/javascript' defer="">
+		
+		Kakao.init('351263138680ffe80baecf42d1e4a1ae');
+
+		function sendLink() {
+			
+			store_notification();
+			//page_load();
+			
+			Kakao.Link
+					.sendDefault({
+						objectType : 'location',
+						address : document.getElementById("input_location").value,
+						addressTitle : document
+								.getElementById("input_location").value,
+						content : {
+							title : document.getElementById("input_title").value,
+							description : document
+									.getElementById("input_contents").value,
+							imageUrl : 'http://ehdus0008.dothome.co.kr/WP_TP2/WebContent/img/cnu.jpg',
+							link : {
+								mobileWebUrl : 'http://ehdus0008.cafe24.com/TP2_SKELETON_HTML.html',
+								webUrl : 'http://ehdus0008.cafe24.com/TP2_SKELETON_HTML.html'
+
+							}
+						},
+
+						buttons : [ {
+							title : '자세히 보기',
+							link : {
+								mobileWebUrl : 'http://ehdus0008.cafe24.com/TP2_SKELETON_HTML.html',
+								webUrl : 'http://ehdus0008.cafe24.com/TP2_SKELETON_HTML.html'
+
+							}
+						} ],
+
+					});
+		}
+
+		//]]>
+	</script>
+
+	<!----------- 게시글 게시판 정의 ----------->
+	<div class="table_div">
+		<!-- 리스트 게시판 시작-->
+		<table id="board" class="sub_news" border="1" cellspacing="0"
+			summary="게시판의 글제목 리스트">
+			<caption>게시판 리스트</caption>
+			<colgroup>
+				<col>
+				<col width="110">
+				<col width="100">
+				<col width="80">
+			</colgroup>
+			<!----------- 테이블 헤더 ----------->
+			<thead>
+				<tr>
+					<th scope="col" style="text-align: center;">제목</th>
+					<th scope="col" style="text-align: center;">글쓴이</th>
+					<th scope="col" style="text-align: center;">날짜</th>
+					<!-- <th scope="col" style="text-align:center;">조회수</th> -->
+				</tr>
+			</thead>
+			<tbody>
+
+
+			</tbody>
+		</table>
+		<!----------- 리스트 게시판 끝 ----------->
+	</div>
+
+
+</body>
+
+</html>
